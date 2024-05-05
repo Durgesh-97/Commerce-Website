@@ -8,9 +8,8 @@ const App = () => {
       <Header />
       <Subheader />
       <Products />
-      
     </div>
   );
-}
+};
 
 export default App;

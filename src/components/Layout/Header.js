@@ -3,7 +3,7 @@ const Header = () => {
         <header>
             <div className="nav-brand">
                 <a to="/">
-                    <span>InstaKart</span>
+                    <span>Patang Baazi</span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="icon icon-tabler icon-tabler-shopping-cart"

@@ -44,7 +44,7 @@ const Products = () => {
               {
                 items.map(item => {
                     console.log(item);
-                    return (<ListItem data={item}/>)
+                    return (<ListItem key={item.id} data={item}/>)
                 })
               }
               {/* {[<ListItem data={item[0]}/>,<ListItem data={item[1]}/>,<ListItem data={item[2]}/>]} Render pattern List */}

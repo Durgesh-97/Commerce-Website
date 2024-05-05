@@ -47,7 +47,7 @@ const Products = () => {
                     return (<ListItem data={item}/>)
                 })
               }
-              {/* {[<ListItem data={item[0]}/>,<ListItem data={item[1]}/>,<ListItem data={item[2]}/>]} Render pattern */}
+              {/* {[<ListItem data={item[0]}/>,<ListItem data={item[1]}/>,<ListItem data={item[2]}/>]} Render pattern List */}
             </div>
         </div>
     )

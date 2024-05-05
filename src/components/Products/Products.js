@@ -2,7 +2,6 @@
 import { useState } from "react";
 import ListItem from "./ListItems/ListItem";
 
-
 const Products = () => {
     const [items, setItems] = useState(
         [
@@ -36,6 +35,7 @@ const Products = () => {
             }
         ]
     )
+
     return (
         <div className={"product-list"}>
             <div className={"product-list--wrapper"}>
@@ -48,6 +48,7 @@ const Products = () => {
                 })
               }
               {/* {[<ListItem data={item[0]}/>,<ListItem data={item[1]}/>,<ListItem data={item[2]}/>]} Render pattern List */}
+
             </div>
         </div>
     )

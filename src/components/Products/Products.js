@@ -1,5 +1,5 @@
 // import ListItem from "./components/Products/ListItems/ListItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ListItem from "./ListItems/ListItem";
 
 const Products = () => {
@@ -33,8 +33,12 @@ const Products = () => {
                 titles: "Title of the Item 4",
                 thumbnail: "placeholder.png"
             }
-        ]
-    )
+        ])
+
+        useEffect(() => {
+           const result = fetch('https://e-commerce-c2a22-default-rtdb.firebaseio.com/items.json')
+           console.log(result); 
+        }, [])
 
     return (
         <div className={"product-list"}>

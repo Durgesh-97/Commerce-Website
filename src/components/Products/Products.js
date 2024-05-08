@@ -1,6 +1,7 @@
 // import ListItem from "./components/Products/ListItems/ListItem";
 import { useEffect, useState } from "react";
 import ListItem from "./ListItems/ListItem";
+// import { response } from "express";
 
 const Products = () => {
     const [items, setItems] = useState(
@@ -36,8 +37,14 @@ const Products = () => {
         ])
 
         useEffect(() => {
-           const result = fetch('https://e-commerce-c2a22-default-rtdb.firebaseio.com/items.json')
-           console.log(result); 
+           fetch('https://e-commerce-c2a22-default-rtdb.firebaseio.com/items')
+           .then(response => response.json())
+           .then(data => {
+            console.log(data);
+           })
+           .catch(error => {
+            console.log(error);
+           })  
         }, [])
 
     return (

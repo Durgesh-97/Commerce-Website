@@ -12,25 +12,18 @@ const Products = () => {
         //    .then(data => {
         //     console.log(error);
         //    })
-
-        axios.get('https://e-commerce-c2a22-default-rtdb.firebaseio.com/items.json')
-        .then(response => {
-            console.log(response);
-            const data = response.data
+        async function fetchItems () {
+        const response = await axios.get('https://e-commerce-c2a22-default-rtdb.firebaseio.com/items.json')
+        const data = response.data
             const transformData = data.map((item, index) => {
                 return{
                     ...item,
                     id: index
                 }
             })
-            setItems(transformData)
-            
-        })
-        .catch(error => {
-            console.log(error);
+            setItems(transformData)        
         }
-
-        )
+        fetchItems();        
     }, [])
 
     return (

@@ -13,15 +13,21 @@ const Products = () => {
         //     console.log(error);
         //    })
         async function fetchItems () {
-        const response = await axios.get('https://e-commerce-c2a22-default-rtdb.firebaseio.com/items.json')
-        const data = response.data
-            const transformData = data.map((item, index) => {
-                return{
-                    ...item,
-                    id: index
-                }
-            })
-            setItems(transformData)        
+            try{
+                const response = await axios.get('https://e-commerce-c2a22-default-rtdb.firebaseio.com/items.json')
+                const data = response.data
+                    const transformData = data.map((item, index) => {
+                        return{
+                            ...item,
+                            id: index
+                        }
+                    })
+                    setItems(transformData)
+            }
+            catch(error) {
+                console.log("Error: ", error);
+                alert("Something is wrong!!!")
+            }             
         }
         fetchItems();        
     }, [])

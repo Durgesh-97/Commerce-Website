@@ -32,6 +32,13 @@ const Products = () => {
         fetchItems();        
     }, [])
 
+    const updateItemTitle = async(itemId) => {
+        console.log(`Item with Id: ${itemId}`);
+        await axios.patch(`https://e-commerce-c2a22-default-rtdb.firebaseio.com/items/${itemId}.json`,{
+            title: "Updated Title" 
+        }) 
+    }
+
     return (
         <div className={"product-list"}>
             <div className={"product-list--wrapper"}>
@@ -40,7 +47,7 @@ const Products = () => {
               {
                 items.map(item => {
                     console.log(item);
-                    return (<ListItem key={item.id} data={item}/>)
+                    return (<ListItem key={item.id} data={item} updateItemTitle={updateItemTitle}/>) 
                 })
               }
               {/* {[<ListItem data={item[0]}/>,<ListItem data={item[1]}/>,<ListItem data={item[2]}/>]} Render pattern List */}

@@ -33,10 +33,16 @@ const Products = () => {
     }, [])
 
     const updateItemTitle = async(itemId) => {
-        console.log(`Item with Id: ${itemId}`);
-        await axios.patch(`https://e-commerce-c2a22-default-rtdb.firebaseio.com/items/${itemId}.json`,{
+        console.log(`Item with Id: ${itemId}`)
+        try{
+            await axios.patch(`https://e-commerce-c2a22-default-rtdb.firebaseio.com/items/${itemId}.json`,{
             title: "Updated Title" 
-        }) 
+        })
+        }
+        catch(error) {
+            console.log("Error Updating the Data");
+        }
+         
     }
 
     return (

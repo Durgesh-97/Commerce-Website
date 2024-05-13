@@ -32,10 +32,10 @@ const Products = () => {
         fetchItems();        
     }, [])
 
-    const updateItemTitle = async(itemId) => {
-        let title = `Update Title #Item-${itemId}`
+    const updateItemTitle = async(itemId) => {        
         console.log(`Item with Id: ${itemId}`)
         try{
+            let title = `Update Title #Item-${itemId}`
             await axios.patch(`https://e-commerce-c2a22-default-rtdb.firebaseio.com/items/${itemId}.json`,{
             title: title 
         })
@@ -47,8 +47,7 @@ const Products = () => {
         }
         catch(error) {
             console.log("Error Updating the Data");
-        }
-         
+        }         
     }
 
     return (
@@ -57,8 +56,7 @@ const Products = () => {
                 {/* <ListItem data={items[0]}></ListItem>
                 <ListItem data={items[1]}></ListItem> */}
               {
-                items.map(item => {
-                    console.log(item);
+                items.map(item => {                    
                     return (<ListItem key={item.id} data={item} updateItemTitle={updateItemTitle}/>) 
                 })
               }

@@ -13,7 +13,7 @@ const Products = () => {
         //     console.log(error);
         //    })
         async function fetchItems () {
-            try{
+            try{                
                 const response = await axios.get('https://e-commerce-c2a22-default-rtdb.firebaseio.com/items.json')
                 const data = response.data
                     const transformData = data.map((item, index) => {
@@ -33,11 +33,17 @@ const Products = () => {
     }, [])
 
     const updateItemTitle = async(itemId) => {
+        let title = `Update Title #Item-${itemId}`
         console.log(`Item with Id: ${itemId}`)
         try{
             await axios.patch(`https://e-commerce-c2a22-default-rtdb.firebaseio.com/items/${itemId}.json`,{
-            title: "Updated Title" 
+            title: title 
         })
+        let data = [...items]
+        let index = data.findIndex(e => e.id === itemId)
+        data[index]['title']= title
+
+        setItems(data)
         }
         catch(error) {
             console.log("Error Updating the Data");

@@ -2,7 +2,7 @@ import { Fragment } from "react"
 import reactDOM from "react-dom"
 import { Backdrop } from "./Loader"
 
-const Modal = ({onClose}) => {
+const Modal = ({onClose, children}) => {
     return (
         <Fragment>
             {
@@ -10,8 +10,8 @@ const Modal = ({onClose}) => {
                     <Fragment>
                         <Backdrop onClose={onClose} />
                         <div className="modal">
-                            Modal Content will appear Here!!!
-                            <button onClick={onClose}>X</button>
+                            <button type="close" onClick={onClose}>X</button>
+                            <div className="content">{children}</div>
                         </div>
                     </Fragment>
                     ,

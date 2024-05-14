@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import ListItem from "./ListItems/ListItem";
 import axios from "axios";
+import Loader from "../UI/Loader";
 
 const Products = () => {
     const [items, setItems] = useState([])
+    const [loader, setLoader] = useState(true)
 
         useEffect(() => {      
         async function fetchItems () {
@@ -16,11 +18,16 @@ const Products = () => {
                         id: index
                 }
             })
+            //  setLoader(false)
              setItems(transformData)
             }
             catch(error) {
+                // setLoader(false)
                 console.log("Error: ", error);
                 alert("Something is wrong!!!")
+            }
+            finally {
+                setLoader(false)
             }             
         }
         fetchItems();        
@@ -45,7 +52,8 @@ const Products = () => {
     }
 
     return (
-        <div className={"product-list"}>
+        <>
+        <div className={"product-list"}> 
             <div className={"product-list--wrapper"}>
                 {/* <ListItem data={items[0]}></ListItem>
                 <ListItem data={items[1]}></ListItem> */}
@@ -58,6 +66,8 @@ const Products = () => {
 
             </div>
         </div>
+        { loader && <Loader />}
+        </>
     )
 }
 

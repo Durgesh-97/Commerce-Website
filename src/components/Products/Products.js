@@ -3,9 +3,10 @@ import ListItem from "./ListItems/ListItem";
 import axios from "axios";
 import Loader from "../UI/Loader";
 
-const Products = () => {
+const Products = ({ onAddItem, OnRemoveItem }) => {
     const [items, setItems] = useState([])
     const [loader, setLoader] = useState(true)
+    const [presentItems, setPresentItems] = useState([])
 
         useEffect(() => {      
         async function fetchItems () {
@@ -33,23 +34,22 @@ const Products = () => {
         fetchItems();        
     }, [])
 
-    const updateItemTitle = async (itemId) => {        
-        console.log(`Item with Id: ${itemId}`)
-        try{
-            let title = `Update Title #Item-${itemId}`
-            await axios.patch(`https://e-commerce-c2a22-default-rtdb.firebaseio.com/items/${itemId}.json`,{
-            title: title 
-        })
-        let data = [...items]
-        let index = data.findIndex(e => e.id === itemId)
-        data[index]['title']= title
-
-        setItems(data)
+    const handleAddItem = id => {
+        if(presentItems.indexOf(id)> -1){
+            return;
         }
-        catch(error) {
-            console.log("Error Updating the Data");
-        }         
+        setPresentItems([...presentItems, id])
+        onAddItem();
     }
+    const handleRemoveItem = id => {
+        let index = presentItems.indexOf(id)
+        if(index > -1) {
+            let items = [...presentItems]
+            items.splice(index, 1)
+            setPresentItems([...items]);
+            OnRemoveItem()    
+        }        
+    } 
 
     return (
         <>
@@ -59,7 +59,7 @@ const Products = () => {
                 <ListItem data={items[1]}></ListItem> */}
               {
                 items.map(item => {                    
-                    return (<ListItem key={item.id} data={item} updateItemTitle={updateItemTitle}/>) 
+                    return (<ListItem onAdd={handleAddItem} OnRemove={handleRemoveItem} key={item.id} data={item} />) 
                 })
               }
               {/* {[<ListItem data={item[0]}/>,<ListItem data={item[1]}/>,<ListItem data={item[2]}/>]} Render pattern List */}

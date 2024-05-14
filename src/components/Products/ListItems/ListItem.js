@@ -6,11 +6,13 @@ const ListItem = ({ data, updateItemTitle }) => {
   const [counter, setCounter] = useState(0);
   const [showModal, setShowModal] = useState(false);
 
-  const increaseCounterByOne = () => {
+  const increaseCounterByOne = event => {
+    event.stopPropagation()
     setCounter(counter + 1);
   };
 
-  const decreaseCounterByOne = () => {
+  const decreaseCounterByOne = event => {
+    event.stopPropagation()
     if (counter === 0) {
       return;
     }

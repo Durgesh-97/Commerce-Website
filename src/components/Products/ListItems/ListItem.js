@@ -51,7 +51,7 @@ const ListItem = ({ data, updateItemTitle }) => {
                 </div>
             }
         </div>
-        { setShowModal && <Modal/>}
+        { showModal && <Modal onClose={handleModal} />}
         </Fragment>
     )
 }

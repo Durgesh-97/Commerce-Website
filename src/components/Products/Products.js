@@ -51,15 +51,6 @@ const Products = ({ onAddItem, onRemoveItem }) => {
             onRemoveItem();    
         }        
     }
-    // const handleRemoveItem = id => {
-    //     let index = presentItems.indexOf(id)
-    //     if(index > -1) {
-    //         let items = [...presentItems]
-    //         items.splice(index, 1)
-    //         setPresentItems([...items]);
-    //         onRemoveItem();
-    //     }
-    // } 
 
     return (
         <>

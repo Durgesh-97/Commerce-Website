@@ -38,7 +38,9 @@ const Cart = ({count}) => {
                         <div className="checkout-modal">
                             <h2>Checkout Modal</h2>
                             <div className="checkout-modal_list">
-                                <div className="checkout-modal_list-item">
+                                {
+                                    count > 0 ?
+                                    <div className="checkout-modal_list-item">
                                     <div className="img-wrap">
                                         <img src={"/assets/placeholder.png"} className="img-fluid" alt="placeholder"/>                                        
                                     </div>
@@ -58,8 +60,11 @@ const Cart = ({count}) => {
                                             <button>+</button>
                                         </div>
                                     </div>
-                                </div>
-                                {/* <div className="empty-cart">Please add something in the Cart</div> */}
+                                </div> 
+                                :
+                                <div className="empty-cart">Please add something in the Cart</div>
+                                }                               
+                                
                             </div>
                             {
                                 count > 0 &&

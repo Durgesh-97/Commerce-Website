@@ -2,9 +2,14 @@ import Products from "./components/Products/Products";
 import Header from "./components/Layout/Header"
 import Subheader from "./components/Layout/subheader";
 import { useState } from "react";
+
   
 const App = () => {
   const [cartItems, setCartItems] = useState([])
+  const[eventQueue, setEventQueue] = useState({
+    id: "",
+    type: ""
+  })
 
   const handleAddItem = item => {
     let items = [...cartItems]
@@ -28,13 +33,25 @@ const App = () => {
     else{
       items[index] = item
     }
-    setCartItems(cartItems - 1)
+    setCartItems([...items])
+    // setCartItems(cartItems - 1)
   }
+
+   //type === -1 decrease the quantity
+   //type === 1 increase the quantity
+  const handleEventQueue = (id, type) => {
+    // console.log({id, type});
+    setEventQueue({
+      id,
+      type
+    })
+  }
+
   return (
     <div>
-      <Header count={cartItems.length} items={cartItems}/>
+      <Header count={cartItems.length} items={cartItems} onHandleEvent={handleEventQueue}/>
       <Subheader />
-      <Products onAddItem={handleAddItem} onRemoveItem={handleRemoveItem}/>
+      <Products onAddItem={handleAddItem} onRemoveItem={handleRemoveItem} eventState={eventQueue}/>
     </div>
   );
 }

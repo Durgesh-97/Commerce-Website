@@ -30,7 +30,7 @@ const mainReducer = (state, action) => {
             let index = items.findIndex(item => item.id === payload.id)
             let totalAmount = state.totalAmount - items[index].discountedPrice
             
-            if (items[index].quantity ===1){
+            if (items[index].quantity === 1){
                 items.splice(index, 1)
             }
             else {

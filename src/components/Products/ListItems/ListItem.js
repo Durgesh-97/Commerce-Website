@@ -1,42 +1,28 @@
 import { Fragment, useState } from "react"
 import AddToCartIcon from "../../../assets/icons/add_cart.svg"
 import Modal from "../../UI/Modal"
-import { useDispatch, useSelector } from "react-redux"
+// import { useDispatch, useSelector } from "react-redux"
+// import { addItemHandler, removeItemHandler } from "../../../actions"
+import { connect } from "react-redux"
 
-const ListItem = ({ data }) => {
+const ListItem = ({ data, item, add_item, remove_item }) => {
     // const [counter, setCounter] = useState(0)
     const [showModal, setShowModal] = useState(false)
-    const item = useSelector(state => state.items.find(item => item.id === data.id))
-    const dispatch = useDispatch()
+    // const item = useSelector(state => state.items.find(item => item.id === data.id))
+    // const dispatch = useDispatch()
 
     const increaseCounterByOne = event => {
         event.stopPropagation()
-        dispatch({
-            type: "ADD_ITEM",
-            payload: {
-                item: data
-            }
-        })
-        // onAdd(data.id)
-        // setCounter(counter+1)
+        add_item();
+        // dispatch(addItemHandler(data))
+       
     }
 
     const decreaseCounterByOne = event => {
         event.stopPropagation()
-        dispatch({
-            type: "REMOVE_ITEM",
-            payload: {
-                id: data.id
-            }
-        })
-        // onRemove(data.id);
-        // if(counter === 0) {
-        //     return;
-        // }
-        // if(counter === 1) {
-        //     onRemove(data.id);
-        // }
-        // // setCounter(counter-1)
+        remove_item();
+        // dispatch(removeItemHandler(data.id))
+        
     }
 
     const handleModal = () => {
@@ -96,7 +82,7 @@ const ListItem = ({ data }) => {
                                 :
                                 <div className="cart-addon card-addon__modal">
                                     <button onClick={decreaseCounterByOne}><span>-</span></button>
-                                    <span>{data.quantity}</span>
+                                    <span>{item.quantity}</span>
                                     <button onClick={increaseCounterByOne}><span>+</span></button>
                                 </div>
                             }
@@ -108,4 +94,36 @@ const ListItem = ({ data }) => {
     )
 }
 
-export default ListItem
+const mapStateToProps = (state, ownProps) => {   
+    return{
+        item: state.items.find(item => item.id === ownProps.data.id)
+    }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        add_item: () => {
+            dispatch({
+                type: "ADD_ITEM",
+                payload: {
+                    item: ownProps.data
+                }
+            })
+        },
+        remove_item: () => {
+            dispatch({
+                type: "REMOVE_ITEM",
+                payload: {
+                    id: ownProps.data.id
+                }
+            })
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListItem)
+
+
+
+
+

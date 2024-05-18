@@ -3,6 +3,7 @@ const mainReducer = (state, action) => {
     switch(type) {
         case 'ADD_ITEM': {
             let items = [...state.items]
+            // let index = items.findIndex(item => item.id === payload.item.id)
             let index = items.findIndex(item => item.id === payload.item.id)
             if (index > -1 ) {
                 items[index] = {
@@ -58,3 +59,4 @@ const mainReducer = (state, action) => {
 }
 
 export default mainReducer
+

@@ -1,0 +1,60 @@
+{
+  "items": [
+    {
+      "description": "Description Here  -",
+      "discountedPrice": 340,
+      "price": 450,
+      "thumbnail": "placeholder.png",
+      "title": "Muesli, Pack of 2"
+    },
+    {
+      "description": "Description Here  -",
+      "discountedPrice": 27,
+      "price": 30,
+      "thumbnail": "placeholder.png",
+      "title": "Oreo Biscuit, Buy 1 Get 1"
+    },
+    {
+      "description": "Description Here  -",
+      "discountedPrice": 340,
+      "price": 450,
+      "thumbnail": "placeholder.png",
+      "title": "Bagrry's Crunchy Fruit & Nut with Cranberries Muesli (Pouch)"
+    },
+    {
+      "description": "Description Here  -",
+      "discountedPrice": 85,
+      "price": 100,
+      "thumbnail": "placeholder.png",
+      "title": "Oreo Biscuit, Pack of 3"
+    },
+    {
+      "description": "Description Here  -",
+      "discountedPrice": 340,
+      "price": 450,
+      "thumbnail": "placeholder.png",
+      "title": "Muesli, Pack of 2"
+    },
+    {
+      "description": "Description Here  -",
+      "discountedPrice": 27,
+      "price": 30,
+      "thumbnail": "placeholder.png",
+      "title": "Oreo Biscuit, Buy 1 Get 1"
+    },
+    {
+      "description": "Description Here  -",
+      "discountedPrice": 340,
+      "price": 450,
+      "thumbnail": "placeholder.png",
+      "title": "Bagrry's Crunchy Fruit & Nut with Cranberries Muesli (Pouch)"
+    },
+    {
+      "description": "Description Here  -",
+      "discountedPrice": 85,
+      "price": 100,
+      "thumbnail": "placeholder.png",
+      "title": "Oreo Biscuit, Pack of 3"
+    }
+  ]
+}

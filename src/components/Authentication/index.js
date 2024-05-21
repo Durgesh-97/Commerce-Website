@@ -1,11 +1,14 @@
-import { useState } from "react";
+import axios from "axios";
+import { Fragment, useState } from "react";
 import { NavLink, useParams } from "react-router-dom/cjs/react-router-dom"
+import Loader from "../UI/Loader"
 
   const AuthenticationIndex = () => {
     const [details, setDetails] = useState({
         email:"",
         password:""
     })
+    const [loader, setLoader] = useState(false)
     const params = useParams()
     const handleInput = e => {       
         setDetails({
@@ -17,11 +20,33 @@ import { NavLink, useParams } from "react-router-dom/cjs/react-router-dom"
     const handleSubmission = e => {
         e.preventDefault();
         console.log(details); 
+        if(params.type === "signup"){
+            signupWithEmailAndPassword()
+        }
     }
+
+    const signupWithEmailAndPassword = async () => {
+        setLoader(true)
+        try{
+            const response = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCdUkRgZoi3Z8V0AgwRBHLgUE-uGhR19H0`, {
+                email: details.email,
+                password: details.password,
+                returnSecureToken: true
+            })
+            console.log(response);            
+        }
+        catch(error) {
+            console.log(error.response);
+        }   
+        finally{
+            setLoader(false)
+        }   
+    } 
  
     console.log(params  );
     return (
-        <div className="authentication-container">
+        <Fragment>
+            <div className="authentication-container">
             <div className="authentication-container--box">
                 <div className="tab-selector">
                    <NavLink exact to= {"/login"}><h3>Login</h3></NavLink>
@@ -43,7 +68,9 @@ import { NavLink, useParams } from "react-router-dom/cjs/react-router-dom"
                     </div>
                 </form>
             </div>
-        </div>
+            </div>
+            {loader && <Loader/>}
+        </Fragment>    
     )
   }
 

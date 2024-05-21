@@ -2,59 +2,59 @@
   "items": [
     {
       "description": "Description Here  -",
-      "discountedPrice": 340,
-      "price": 450,
+      "discountedPrice": 15,
+      "price": 20,
       "thumbnail": "placeholder.png",
-      "title": "Muesli, Pack of 2"
+      "title": "Chill"
     },
     {
       "description": "Description Here  -",
-      "discountedPrice": 27,
+      "discountedPrice": 15,
+      "price": 20,
+      "thumbnail": "placeholder.png",
+      "title": "Dhol"
+    },
+    {
+      "description": "Description Here  -",
+      "discountedPrice": 1500,
+      "price": 2000,
+      "thumbnail": "placeholder.png",
+      "title": "Manja- 16 Tar"
+    },
+    {
+      "description": "Description Here  -",
+      "discountedPrice": 1000,
+      "price": 1500,
+      "thumbnail": "placeholder.png",
+      "title": "Manja 12 Tar"
+    },
+    {
+      "description": "Description Here  -",
+      "discountedPrice": 300,
+      "price": 450,
+      "thumbnail": "placeholder.png",
+      "title": "Chakkar Big"
+    },
+    {
+      "description": "Description Here  -",
+      "discountedPrice": 25,
       "price": 30,
       "thumbnail": "placeholder.png",
-      "title": "Oreo Biscuit, Buy 1 Get 1"
+      "title": "Patang Chil Big"
     },
     {
       "description": "Description Here  -",
-      "discountedPrice": 340,
+      "discountedPrice": 200,
       "price": 450,
       "thumbnail": "placeholder.png",
-      "title": "Bagrry's Crunchy Fruit & Nut with Cranberries Muesli (Pouch)"
+      "title": "Chakkar Midium"
     },
     {
       "description": "Description Here  -",
-      "discountedPrice": 85,
-      "price": 100,
+      "discountedPrice": 5,
+      "price": 15,
       "thumbnail": "placeholder.png",
-      "title": "Oreo Biscuit, Pack of 3"
-    },
-    {
-      "description": "Description Here  -",
-      "discountedPrice": 340,
-      "price": 450,
-      "thumbnail": "placeholder.png",
-      "title": "Muesli, Pack of 2"
-    },
-    {
-      "description": "Description Here  -",
-      "discountedPrice": 27,
-      "price": 30,
-      "thumbnail": "placeholder.png",
-      "title": "Oreo Biscuit, Buy 1 Get 1"
-    },
-    {
-      "description": "Description Here  -",
-      "discountedPrice": 340,
-      "price": 450,
-      "thumbnail": "placeholder.png",
-      "title": "Bagrry's Crunchy Fruit & Nut with Cranberries Muesli (Pouch)"
-    },
-    {
-      "description": "Description Here  -",
-      "discountedPrice": 85,
-      "price": 100,
-      "thumbnail": "placeholder.png",
-      "title": "Oreo Biscuit, Pack of 3"
+      "title": "Patang Panni"
     }
   ]
 }

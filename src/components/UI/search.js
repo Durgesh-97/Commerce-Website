@@ -23,8 +23,6 @@ const SearchBox = () => {
                 search: `search=${search}`
             })
         }
-
-
     
     return (
         <Fragment>

@@ -3,8 +3,7 @@ import Header from "./components/Layout/Header"
 import Subheader from "./components/Layout/Subheader";
 // import { useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom/cjs/react-router-dom";
-
-
+import AuthenticationIndex from "./components/Authentication";
 
 const App = () => {
   return (
@@ -12,6 +11,9 @@ const App = () => {
       <Header/>
       <Subheader/>
       <Switch>
+        <Route path="/:type(login|Signup)" exact>
+          <AuthenticationIndex/>
+        </Route>
         <Route path="/404" exact>
           <h1>Not Found!</h1>
         </Route>

@@ -1,12 +1,13 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import Cart from "../Cart";
-import SearchBox from "../UI/search";
-import { useDispatch, useSelector } from "react-redux";
+import SearchBox from "../UI/Search";
+import { useSelector } from "react-redux";
 
 const Header = () => {
     const history = useHistory()
     const authState = useSelector(state => state.auth)
     // const dispatch = useDispatch()
+    
     return (
         <header>
             <div className="nav-brand">
@@ -43,7 +44,7 @@ const Header = () => {
             }
             <div className="cart-container">
                 <Cart/>
-            </div>
+            </div> 
         </header>
 
     )

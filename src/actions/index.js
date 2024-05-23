@@ -3,7 +3,7 @@ export const addItemHandler = item => {
         dispatch({
             type: "ADD_ITEM",
             payload: {
-                item
+                item: item
             }            
         })
     }
@@ -14,17 +14,18 @@ export const removeItemHandler = id => {
         dispatch({
             type: "REMOVE_ITEM",
             payload: {
-                id
-            }
-            
+                id: id
+            }            
         })
     }
 } 
 
-export const clearCartHandler = () => dispatch => {    
+export const clearCartHandler = () => {  
+    return dispatch => {  
         dispatch({
             type: "CLEAR_CART"
         })
     }
+}
 
 

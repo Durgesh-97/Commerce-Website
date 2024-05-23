@@ -2,23 +2,16 @@ import { Fragment, useState } from "react"
 import Modal from "../UI/Modal"
 import CartItem from "./CartItem"
 import OrderSuccessModal from "../UI/OrderSuccess"
-// import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { addItemHandler, clearCartHandler, removeItemHandler } from "../../actions"
-import { connect } from "react-redux"
+// import { connect } from "react-redux"
 
-const Cart = ({
-    items, 
-    totalAmount, 
-    addItemHandler, 
-    removeItemHandler, 
-    clearCartHandler
-}) => {
+const Cart = () => {
     const [showModal, setShowModal] = useState(false)
     const [orderModal, setOrderModal ] = useState(false)
-
-    // const items = useSelector(state => state.items)    
-    // const totalAmount = useSelector(state => state.totalAmount)
-    // const dispatch = useDispatch()
+    const items = useSelector(state => state.cart.items)
+    const totalAmount = useSelector(state => state.cart.totalAmount)
+    const dispatch = useDispatch()
 
     const handleModal = () => {
         setShowModal(previousState => !previousState)
@@ -26,18 +19,18 @@ const Cart = ({
 
     const handleOrderModal = () => {
         setShowModal(false);
-        clearCartHandler()
+       dispatch (clearCartHandler())
         setOrderModal(previous => !previous)
     }
 
-    // const dispatchEvents = (type, item) => {
-    //     if(type === 1) {
-    //         dispatch(addItemHandler(item))
-    //     }
-    //     else if (type === -1) {
-    //         dispatch(removeItemHandler(item.id))
-    //     }
-    // }
+    const dispatchEvents = (type, item) => {
+        if(type === 1) {
+            dispatch(addItemHandler(item))
+        }
+        else if (type === -1) {
+            dispatch(removeItemHandler(item.id))
+        }
+    }
 
       return(
         <Fragment>
@@ -74,10 +67,10 @@ const Cart = ({
                                     items.map(item => {
                                         return(
                                         <CartItem 
-                                        data={item} 
-                                        onEmitIncreaseItem={()=> addItemHandler(item)}
-                                        onEmitDecreaseItem={() => removeItemHandler(item.id)}                                          
-                                        key={item.id}
+                                          data={item} 
+                                          onEmitIncreaseItem={item => dispatchEvents(1, item)}
+                                          onEmitDecreaseItem={item => dispatchEvents(-1, item)}                                          
+                                          key={item.id}
                                         />)
                                     }) 
                                 :
@@ -106,19 +99,19 @@ const Cart = ({
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        items: state.items,
-        totalAmount: state.totalAmount
-    }
-}
+// const mapStateToProps = (state) => {
+//     return {
+//         items: state.items,
+//         totalAmount: state.totalAmount
+//     }
+// }
 
-const mapDispatchToProps = {
-    addItemHandler ,
-    removeItemHandler,
-    clearCartHandler
-}
+// const mapDispatchToProps = {
+//     addItemHandler ,
+//     removeItemHandler,
+//     clearCartHandler
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default Cart
 
 

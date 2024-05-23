@@ -12,9 +12,7 @@ const OrderSuccessModal = ({onClose}) => {
                         <span>OrderId: {Math.random().toString(32).slice(2)}</span>
                     </div>                    
                 </div>
-
             </div>
-
         </Modal>
     )
 }

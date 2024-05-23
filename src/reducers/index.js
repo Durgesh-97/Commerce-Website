@@ -1,9 +1,14 @@
-const mainReducer = (state, action) => {
+import { combineReducers } from "redux"
+import authenticationReducer from "./authentication"
+
+const mainReducer = (state = {
+    items: [],
+    totalAmount: 0
+}, action) => {
     const { type, payload} = action
     switch(type) {
         case 'ADD_ITEM': {
             let items = [...state.items]
-            // let index = items.findIndex(item => item.id === payload.item.id)
             let index = items.findIndex(item => item.id === payload.item.id)
             if (index > -1 ) {
                 items[index] = {
@@ -37,9 +42,10 @@ const mainReducer = (state, action) => {
             else {
                 items[index] = {
                     ...items[index],
-                    quantity: items[index].quantity -1
+                    quantity: items[index].quantity - 1
                 }
             }
+            
             return {
                 ...state,
                 items: items,
@@ -58,5 +64,9 @@ const mainReducer = (state, action) => {
    
 }
 
-export default mainReducer
+// export default mainReducer
+export default combineReducers({
+    cart: mainReducer,
+    authentication: authenticationReducer
+})
 

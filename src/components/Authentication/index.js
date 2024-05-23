@@ -1,7 +1,8 @@
-import axios from "axios";
-import { Fragment, useState } from "react";
-import { NavLink, useParams } from "react-router-dom/cjs/react-router-dom"
+import { Fragment, useEffect, useState } from "react";
+import { NavLink, useHistory, useParams } from "react-router-dom/cjs/react-router-dom"
 import Loader from "../UI/Loader"
+import { useDispatch } from "react-redux";
+import { loginwithEmailAndPassword, signupWithEmailAndPassword } from "../../actions/authentication";
 
   const AuthenticationIndex = () => {
     const [details, setDetails] = useState({
@@ -10,6 +11,9 @@ import Loader from "../UI/Loader"
     })
     const [loader, setLoader] = useState(false)
     const params = useParams()
+    const dispatch = useDispatch()
+    const history = useHistory() 
+
     const handleInput = e => {       
         setDetails({
             ...details,
@@ -17,33 +21,49 @@ import Loader from "../UI/Loader"
         })
     }
 
+    useEffect(() => {
+        return () => {
+            setLoader(false)
+            setDetails({
+                email: "",
+                password: ""
+            })
+        }
+    }, [])
+
     const handleSubmission = e => {
         e.preventDefault();
         console.log(details); 
         if(params.type === "signup"){
-            signupWithEmailAndPassword()
+            setLoader(true)
+            dispatch(signupWithEmailAndPassword(details, data => {
+                if (data.error){
+                    console.log(data.error);                   
+                    alert("There is an error")
+                }
+                else{
+                    console.log("Signup Successful!");
+                    history.replace("/")
+                }
+                setLoader(false)
+            }))
+        }
+        else if (params.type === "login"){
+            setLoader(true)
+            dispatch(loginwithEmailAndPassword(details, data => {
+                if (data.error){
+                    console.log(data.response);
+                    alert(data?.response?.data?.error?.message || "There is an error")
+                }
+                else{
+                    console.log("Login Successful!");
+                    history.replace("/")
+                }
+                setLoader(false)
+            }))
         }
     }
-
-    const signupWithEmailAndPassword = async () => {
-        setLoader(true)
-        try{
-            const response = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCdUkRgZoi3Z8V0AgwRBHLgUE-uGhR19H0`, {
-                email: details.email,
-                password: details.password,
-                returnSecureToken: true
-            })
-            console.log(response);            
-        }
-        catch(error) {
-            console.log(error.response);
-        }   
-        finally{
-            setLoader(false)
-        }   
-    } 
- 
-    console.log(params  );
+    
     return (
         <Fragment>
             <div className="authentication-container">

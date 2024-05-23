@@ -1,9 +1,12 @@
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import Cart from "../Cart";
 import SearchBox from "../UI/search";
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
     const history = useHistory()
+    const authState = useSelector(state => state.auth)
+    // const dispatch = useDispatch()
     return (
         <header>
             <div className="nav-brand">
@@ -32,7 +35,12 @@ const Header = () => {
             <div className="searchBox-container">
             <SearchBox/>
             </div>
-            <button className="login-button" onClick={() => history.push("/login")}>Login</button>
+            { 
+                authState && authState.idToken ? 
+                <button className="login-button">User Profile</button>
+                :
+                <button className="login-button" onClick={() => history.push("/login")}>Login</button>
+            }
             <div className="cart-container">
                 <Cart/>
             </div>

@@ -54,9 +54,7 @@ const Products = () => {
         return () => {
             setItems([])
             setLoader(true)    
-            
         }
-
     }, [params.category, queryParams])
 
     const handleNotFound = () => {

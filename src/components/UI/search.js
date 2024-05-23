@@ -1,14 +1,13 @@
+
 import { useState, Fragment, useEffect } from "react"
 import { useHistory, useLocation } from "react-router-dom/cjs/react-router-dom"
 
 const SearchBox = () => {
         const history = useHistory()
-        const {search: queryString} = useLocation()
-        
+        const {search: queryString} = useLocation()        
         const [search, setSearch] = useState("")
         
         useEffect(() => {
-
             const queryParams = new URLSearchParams(history.location.search).get("search")
             setSearch(queryParams || "")
         }, [queryString])

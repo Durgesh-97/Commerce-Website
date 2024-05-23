@@ -1,27 +1,26 @@
 import { Fragment, useState } from "react"
 import AddToCartIcon from "../../../assets/icons/add_cart.svg"
 import Modal from "../../UI/Modal"
-// import { useDispatch, useSelector } from "react-redux"
-// import { addItemHandler, removeItemHandler } from "../../../actions"
-import { connect } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { addItemHandler, removeItemHandler } from "../../../actions"
+// import { connect } from "react-redux"
 
-const ListItem = ({ data, item, add_item, remove_item }) => {
+const ListItem = ({ data }) => {
     // const [counter, setCounter] = useState(0)
     const [showModal, setShowModal] = useState(false)
-    // const item = useSelector(state => state.items.find(item => item.id === data.id))
-    // const dispatch = useDispatch()
+    const item = useSelector(state => state.cart.items.find(item => item.id === data.id))
+    const dispatch = useDispatch()
 
     const increaseCounterByOne = event => {
         event.stopPropagation()
-        add_item();
-        // dispatch(addItemHandler(data))
-       
+        // add_item();
+        dispatch(addItemHandler(data))       
     }
 
     const decreaseCounterByOne = event => {
         event.stopPropagation()
-        remove_item();
-        // dispatch(removeItemHandler(data.id))
+        // remove_item();
+        dispatch(removeItemHandler(data.id))
         
     }
 
@@ -94,34 +93,34 @@ const ListItem = ({ data, item, add_item, remove_item }) => {
     )
 }
 
-const mapStateToProps = (state, ownProps) => {   
-    return{
-        item: state.items.find(item => item.id === ownProps.data.id)
-    }
-}
+// const mapStateToProps = (state, ownProps) => {   
+//     return{
+//         item: state.items.find(item => item.id === ownProps.data.id)
+//     }
+// }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        add_item: () => {
-            dispatch({
-                type: "ADD_ITEM",
-                payload: {
-                    item: ownProps.data
-                }
-            })
-        },
-        remove_item: () => {
-            dispatch({
-                type: "REMOVE_ITEM",
-                payload: {
-                    id: ownProps.data.id
-                }
-            })
-        }
-    }
-}
+// const mapDispatchToProps = (dispatch, ownProps) => {
+//     return {
+//         add_item: () => {
+//             dispatch({
+//                 type: "ADD_ITEM",
+//                 payload: {
+//                     item: ownProps.data
+//                 }
+//             })
+//         },
+//         remove_item: () => {
+//             dispatch({
+//                 type: "REMOVE_ITEM",
+//                 payload: {
+//                     id: ownProps.data.id
+//                 }
+//             })
+//         }
+//     }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListItem)
+export default ListItem
 
 
 

@@ -22,8 +22,6 @@ const App = () => {
         </Route>
         <Redirect to= "/404"/>
       </Switch>
-     
-      
     </div>
   );
 }

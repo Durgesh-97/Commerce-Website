@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
     const history = useHistory()
-    const authState = useSelector(state => state.auth)
+    const authenticationState = useSelector(state => state.authentication)
     // const dispatch = useDispatch()
     
     return (
@@ -37,10 +37,10 @@ const Header = () => {
             <SearchBox/>
             </div>
             { 
-                authState && authState.idToken ? 
-                <button className="login-button">User Profile</button>
-                :
-                <button className="login-button" onClick={() => history.push("/login")}>Login</button>
+               authenticationState && authenticationState.idToken ?
+              <button className="login-button">Profile</button> 
+              :
+              <button className="login-button" onClick={() => history.push("/login")}>Login</button> 
             }
             <div className="cart-container">
                 <Cart/>

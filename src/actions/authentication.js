@@ -28,7 +28,7 @@ export const signupWithEmailAndPassword =  (details, callback) => {
     }
 }
 
-export const loginwithEmailAndPassword = (details, callback) => {
+export const loginWithEmailAndPassword = (details, callback) => {
     return async(dispatch) => {
         try{
             const response = await axios.post(`${BASE_URL}accounts:signInWithPassword?key=${API_KEY}`, {

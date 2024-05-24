@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { NavLink, useHistory, useParams } from "react-router-dom/cjs/react-router-dom"
 import Loader from "../UI/Loader"
 import { useDispatch } from "react-redux";
-import { loginwithEmailAndPassword, signupWithEmailAndPassword } from "../../actions/authentication";
+import { loginWithEmailAndPassword, signupWithEmailAndPassword } from "../../actions/authentication";
 
   const AuthenticationIndex = () => {
     const [details, setDetails] = useState({
@@ -50,7 +50,7 @@ import { loginwithEmailAndPassword, signupWithEmailAndPassword } from "../../act
         }
         else if (params.type === "login"){
             setLoader(true)
-            dispatch(loginwithEmailAndPassword(details, data => {
+            dispatch(loginWithEmailAndPassword(details, data => {
                 if (data.error){
                     console.log(data.response);
                     alert(data?.response?.data?.error?.message || "There is an error")

@@ -4,8 +4,17 @@ import Subheader from "./components/Layout/Subheader";
 // import { useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom/cjs/react-router-dom";
 import AuthenticationIndex from "./components/Authentication";
+import { useEffect } from "react";
+import { checkIsLoggedIn } from "./actions/authentication";
+import { useDispatch } from "react-redux";
 
 const App = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(checkIsLoggedIn(() => {}))
+  }, [])
+
   return (
     <div>
       <Header/>

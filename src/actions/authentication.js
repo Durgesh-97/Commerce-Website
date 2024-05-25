@@ -16,6 +16,7 @@ export const signupWithEmailAndPassword =  (details, callback) => {
                 type: 'SIGNUP',
                 payload: response.data
             })
+            localStorage.setItem("token", response.data.idToken)
             return callback(response.data)       
         }
         catch(error) {
@@ -41,6 +42,7 @@ export const loginWithEmailAndPassword = (details, callback) => {
                 type: 'LOGIN',
                 payload: response.data
             })
+            localStorage.setItem("token", response.data.idToken)
             return callback(response.data)       
         }
         catch(error) {
@@ -52,4 +54,35 @@ export const loginWithEmailAndPassword = (details, callback) => {
         }  
     }
 }
-     
+
+export const checkIsLoggedIn = (callback) => {
+    return async(dispatch) => {
+        try{
+            let token = localStorage.getItem("token")
+            if(!token) {
+                return;
+            }
+            const response = await axios.post(`${BASE_URL}accounts:lookup?key=${API_KEY}`, {
+                idToken: token
+            })
+            // console.log(response);     
+            dispatch({
+                type: 'LOGIN',
+                payload: { 
+                    idToken: token,
+                ...response.data
+                }
+            })
+            return callback(response.data)       
+        }
+        catch(error) {
+            // console.log(error.response);
+            return callback({
+                error: true,
+                response: error.response
+            })
+        } 
+    }
+}
+// https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=[API_KEY]
+

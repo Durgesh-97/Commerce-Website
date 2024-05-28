@@ -55,7 +55,7 @@ export const loginWithEmailAndPassword = (details, callback) => {
     }
 }
 
-export const checkIsLoggedIn = (callback) => {
+export const checkIsLoggedIn = callback => {
     return async(dispatch) => {
         try{
             let token = localStorage.getItem("token")
@@ -70,7 +70,8 @@ export const checkIsLoggedIn = (callback) => {
                 type: 'LOGIN',
                 payload: { 
                     idToken: token,
-                ...response.data
+                    localId: response.data.users[0].localId,
+                ...response.data                
                 }
             })
             return callback(response.data)       

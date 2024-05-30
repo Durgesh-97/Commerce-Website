@@ -1,12 +1,17 @@
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import {useHistory } from "react-router-dom/cjs/react-router-dom";
 import Cart from "../Cart";
 import SearchBox from "../UI/Search";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../actions/authentication";
 
 const Header = () => {
     const history = useHistory()
     const authenticationState = useSelector(state => state.authentication)
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
+
+    const logoutHandler = () => {
+        dispatch(logout())
+    }
     
     return (
         <header>
@@ -38,7 +43,10 @@ const Header = () => {
             </div>
             { 
                authenticationState && authenticationState.idToken ?
-              <button className="login-button">Profile</button> 
+               <div className="user-actions">
+              <button className="login-button">Profile</button>
+              <button onClick={logoutHandler} title="Logout" className="material-icons">logout</button>
+              </div> 
               :
               <button className="login-button" onClick={() => history.push("/login")}>Login</button> 
             }

@@ -28,7 +28,7 @@ const Cart = () => {
     const orderHandler = () => {
         // dispatch (clearCartHandler())
         dispatch (placeOrderHandler(response => {
-            console.log(response);
+            // console.log(response);
             if(response.error) {
                 alert(response.data.error || "Error Occured")                
             }

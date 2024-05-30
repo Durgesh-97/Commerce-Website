@@ -33,7 +33,6 @@ const Products = () => {
                 const transformData = data.map((item, index) => {
                     return{
                         ...item,
-                        // quantity: 0,
                         id: index
                 }
             })

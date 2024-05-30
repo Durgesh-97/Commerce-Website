@@ -85,5 +85,12 @@ export const checkIsLoggedIn = callback => {
         } 
     }
 }
-// https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=[API_KEY]
 
+export const logout = () => {
+    return dispatch => {
+        localStorage.removeItem("token")
+        dispatch({
+            type: "LOGOUT"
+        })
+    }
+}

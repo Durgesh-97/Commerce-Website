@@ -33,7 +33,7 @@ import { loginWithEmailAndPassword, signupWithEmailAndPassword } from "../../act
 
     const handleSubmission = e => {
         e.preventDefault();
-        console.log(details); 
+        // console.log(details); 
         if(params.type === "signup"){
             setLoader(true)
             dispatch(signupWithEmailAndPassword(details, data => {

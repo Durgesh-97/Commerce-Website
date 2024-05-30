@@ -1,7 +1,6 @@
 import Products from "./components/Products/Products";
 import Header from "./components/Layout/Header"
 import Subheader from "./components/Layout/Subheader";
-// import { useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom/cjs/react-router-dom";
 import AuthenticationIndex from "./components/Authentication";
 import { useEffect } from "react";
@@ -22,15 +21,17 @@ const App = () => {
       <Subheader/>
       <Switch>
         {
-          !authenticationState.id && 
-          <Route path="/:type(login|Signup)" exact>
+          !authenticationState.idToken && 
+          <Route path="/:type(login|signup)" exact>
           <AuthenticationIndex/>
         </Route>
         }
+        <Redirect to = "/" from ="login"/>
+        <Redirect to = "/" from ="signup"/>
         <Route path="/404" exact>
           <h1>Not Found!</h1>
         </Route>
-      <Route path="/:category?" exact  >
+      <Route path="/:category?" exact>
         <Products/>
         </Route>
         <Redirect to= "/404"/>

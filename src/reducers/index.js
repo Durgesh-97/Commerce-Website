@@ -32,9 +32,9 @@ const mainReducer = (state = {
             }
         }
         case 'REMOVE_ITEM': {            
-            let items = [...state.items]
-            let index = items.findIndex(item => item.id === payload.id)
-            let totalAmount = state.totalAmount - items[index].discountedPrice
+            let items = [...state.items]            
+            let index = items.findIndex(item => item.id === payload.id)            
+            let totalAmount = state.totalAmount - items[index].discountedPrice           
             
             if (items[index].quantity === 1){
                 items.splice(index, 1)
@@ -44,7 +44,7 @@ const mainReducer = (state = {
                     ...items[index],
                     quantity: items[index].quantity - 1
                 }
-            }
+            }   
             
             return {
                 ...state,

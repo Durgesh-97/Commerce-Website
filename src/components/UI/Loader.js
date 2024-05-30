@@ -15,7 +15,7 @@ export const Backdrop = props => {
 const Loader = () => {
     return ( 
         ReactDom.createPortal(
-            <>
+        <>
         <Backdrop/>
         <div className="loading-dots">
         <div>Please Wait</div>

@@ -45,7 +45,7 @@ const Header = () => {
                authenticationState && authenticationState.idToken ?
                <div className="user-actions">
               <button className="login-button">Profile</button>
-              <button onClick={logoutHandler} title="Logout" className="material-icons">logout</button>
+              <button onClick={logoutHandler} title="Logout" className="material-icons">Logout</button>
               </div> 
               :
               <button className="login-button" onClick={() => history.push("/login")}>Login</button> 

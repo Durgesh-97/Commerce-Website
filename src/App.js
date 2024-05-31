@@ -26,8 +26,8 @@ const App = () => {
           <AuthenticationIndex/>
         </Route>
         }
-        <Redirect to = "/" from ="login"/>
-        <Redirect to = "/" from ="signup"/>
+        <Redirect to = "/" from ="/login"/>
+        <Redirect to = "/" from ="/signup"/>
         <Route path="/404" exact>
           <h1>Not Found!</h1>
         </Route>

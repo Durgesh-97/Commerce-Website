@@ -31,8 +31,8 @@ const Header = () => {
                         strokeLinejoin="round"
                     >
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <circle cx={6} cy={19} r={2} />
-                        <circle cx={17} cy={19} r={2} />
+                        <circle cx="6" cy="19" r="2" />
+                        <circle cx="17" cy="19" r="2" />
                         <path d="M17 17h-11v-14h-2" />
                         <path d="M6 5l14 1l-1 7h-13" />
                     </svg>
@@ -44,8 +44,8 @@ const Header = () => {
             { 
                authenticationState && authenticationState.idToken ?
                <div className="user-actions">
-              <button className="login-button">Profile</button>
-              <button onClick={logoutHandler} title="Logout" className="material-icons">Logout</button>
+                  <button title="User Profile" className="material-icons">Profile</button>
+                  <button onClick={logoutHandler} title="Logout" className="material-icons">Logout</button>
               </div> 
               :
               <button className="login-button" onClick={() => history.push("/login")}>Login</button> 
@@ -60,3 +60,4 @@ const Header = () => {
 }
 
 export default Header;
+

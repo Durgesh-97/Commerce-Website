@@ -3,6 +3,7 @@ import Cart from "../Cart";
 import SearchBox from "../UI/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/authentication";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 const Header = () => {
     const history = useHistory()
@@ -16,7 +17,7 @@ const Header = () => {
     return (
         <header>
             <div className="nav-brand">
-                <a to="/">
+                <NavLink to={"/"}>
                     <span>Patang Baazi</span>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +37,7 @@ const Header = () => {
                         <path d="M17 17h-11v-14h-2" />
                         <path d="M6 5l14 1l-1 7h-13" />
                     </svg>
-                </a>
+                </NavLink>
             </div>
             <div className="searchBox-container">
             <SearchBox/>
